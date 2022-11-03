@@ -1,6 +1,11 @@
 import './App.css';
 
 function App() {
+<<<<<<< HEAD
+=======
+
+    
+>>>>>>> 17250b867eea4c1f80168b7c8cf2e325747a4dfa
     return (
         <div className='App'>
             <div className='main-box'>
