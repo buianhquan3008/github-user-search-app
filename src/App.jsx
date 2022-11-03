@@ -1,19 +1,39 @@
+import { useEffect, useRef, useState } from 'react';
 import './App.css';
 
 function App() {
-<<<<<<< HEAD
-=======
+    const [theme, setTheme] = useState('Dark');
+    const [input, setInput] = useState('');
+    const [name, setName] = useState('');
+    const inputRef = useRef(null);
 
-    
->>>>>>> 17250b867eea4c1f80168b7c8cf2e325747a4dfa
+    const handlerClickTheme = (e) => {
+        const newTheme = theme === 'Dark' ? 'Light' : 'Dark';
+        setTheme(newTheme);
+    };
+
+    const handlerSearch = (e) => {
+        setInput(inputRef.current.value);
+    };
+
+    useEffect(() => {
+        fetch(`https://api.github.com/users/${input}`)
+            .then((res) => res.json())
+            .then((data) => setName(data.name))
+            .catch((e) => setName('The Octocat'));
+    }, [input]);
+
     return (
-        <div className='App'>
+        <div className='App' data-theme={theme}>
             <div className='main-box'>
                 <div className='header'>
                     <div className='header-title'>devfinder</div>
                     <div className='header-mode'>
-                        <div className='mode-text'>Light</div>
-                        <div className='mode-icon'></div>
+                        <div className='mode-text'>{theme}</div>
+                        <div
+                            className='mode-icon'
+                            onClick={handlerClickTheme}
+                        ></div>
                     </div>
                 </div>
                 <div className='search'>
@@ -23,15 +43,18 @@ function App() {
                             type='text'
                             className='search-input'
                             placeholder='Search GitHub username…'
+                            ref={inputRef}
                         />
                     </div>
-                    <button className='search-button'>Search</button>
+                    <button className='search-button' onClick={handlerSearch}>
+                        Search
+                    </button>
                 </div>
                 <div className='content'>
                     <div className='avatar'>
                         <div className='icon'></div>
                         <div className='avatar-desc'>
-                            <div className='name'>The Octocat</div>
+                            <div className='name'>{name}</div>
                             <div className='sub-name'>@octocat</div>
                             <div className='date'>Joined 25 Jan 2011</div>
                         </div>

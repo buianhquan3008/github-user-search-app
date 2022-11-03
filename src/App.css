@@ -21,25 +21,25 @@
   --building-bg-url: url('../public/office-building.png');
 }
 
-[data-theme='light'] {
-  --background: #F2F2F2;;
+[data-theme='Light'] {
+  --background: #F6F8FF;
   --header-title-clr: #222731;
   --mode-text-clr: #4B6A9B;
   --mode-icon-url: url('../public/moon.png');
-  --search-bg: #F6F8FF;;
-  --search-input-bg: #F6F8FF;
+  --search-bg: var(--text-primary);
+  --search-input-bg: var(--text-primary);
   --search-input-clr:#4B6A9B;
-  --content-bg: #F6F8FF;
+  --content-bg: var(--text-primary);
   --name-crl: #2B3442;
   --date-crl: #697C9A;
-  --content-text-clr: var(--text-primary);
-  --content-value-bg: #141D2F;
+  --content-text-clr: #222731;
+  --content-value-bg: #F6F8FF;
   --content-value__text-clr: #4B6A9B;;
   --content-value__value-crl: #2B3442;;
   --content-icon__text-crl: #4B6A9B;;
   --pin-bg-url: url('../public/pin-light.png');
   --link-bg-url: url('../public/url-light.png');
-  --twiter-bg-url: url('../public/twitter.png');
+  --twiter-bg-url: url('../public/twitter-light.png');
   --building-bg-url: url('../public/office-building-light.png');
 }
 
@@ -49,8 +49,10 @@
 }
 
 body {
-  background: #141D2F;
+  /* background: var(--search-input-bg); */
   /* padding: 0 24px; */
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .body--light {
@@ -58,14 +60,15 @@ body {
 }
 
 .App {
-  /* background: #141D2F; */
+  background: var(--background);
+  height: 100vh;
 }
 .main-box {
-  padding: 0 24px;
+  padding: 31px 24px;
 }
 
 .header {
-  margin-top: 31px;
+  /* margin-top: 31px; */
   display: flex;
   justify-content: space-between;
 }
@@ -186,6 +189,7 @@ body {
   font-size: 13px;
   line-height: 19px;
   color: #FFFFFF;
+  cursor: pointer;
 }
 
 .content {
